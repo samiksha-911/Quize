@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ session.username }}!</h1>
+        <form action="/submit" method="post">
+            {% for i, question in enumerate(questions) %}
+                <div class="question-block">
+                    <h3>Question {{ i + 1 }}: {{ question.question }}</h3>
+                    <div class="options">
+                        {% for option in question.options %}
+                            <div>
+                                <input type="radio" name="question_{{ i }}" value="{{ option }}" id="q{{i}}o{{loop.index}}" required>
+                                <label for="q{{i}}o{{loop.index}}">{{ option }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            <input type="submit" value="Submit Quiz">
+        </form>
+        <br>
+        <a href="/logout" class="button">Logout</a>
+    </div>
+</body>
+</html>

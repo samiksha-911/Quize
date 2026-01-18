@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Results</h1>
+        <h2>Your score: {{ score }} / {{ total }}</h2>
+        <a href="/" class="button">Try Again</a>
+        <br><br>
+        <a href="/logout" class="button">Logout</a>
+    </div>
+</body>
+</html>
